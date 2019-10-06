@@ -1,5 +1,6 @@
 <template>
   <div>
+    <mapDrag @drag="dragMap" class="mapbox"></mapDrag>
     <van-nav-bar
             title="收费地址"
             left-text="返回"
@@ -24,10 +25,19 @@
 </template>
 
 <script>
+  import mapDrag from "../../../../components/map/mapDrag";
   export default {
     name: "Address",
     data(){
       return {
+        dragData: {
+          lng: null,
+          lat: null,
+          address: null,
+          nearestJunction: null,
+          nearestRoad: null,
+          nearestPOI: null
+        },
         chosenAddressId: '1',
         list: [
           {
@@ -66,13 +76,23 @@
         this.$router.push("/index/address/add");
         console.log(('新增地址'));
       },
-
+      dragMap (data) {
+        this.dragData = {
+          lng: data.position.lng,
+          lat: data.position.lat,
+          address: data.address,
+          nearestJunction: data.nearestJunction,
+          nearestRoad: data.nearestRoad,
+          nearestPOI: data.nearestPOI
+        }
+      },
       onEdit(item, index) {
         console.log(item);
         console.log(('编辑地址:' + index));
       }
     },
     components: {
+      mapDrag
     }
   }
 </script>
@@ -81,4 +101,6 @@
   .content {
     margin-top: 50px;
   }
+
+  .mapbox{ width: 300px; height: 150px; margin-bottom: 20px; float: left; }
 </style>

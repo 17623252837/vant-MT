@@ -1,12 +1,9 @@
 import axios from 'axios'
 
-
 //api请求地址
-const baseUrl =  'http://192.168.43.244';
+const baseUrl =  'http://119.3.15.101';
 const basePort = '9090';
 const base = baseUrl + ':' + basePort;
-
-
 
 export function get(config) {
   // 1.创建axios的实例
@@ -33,8 +30,6 @@ export function get(config) {
   // 3.发送真正的网络请求
   return instance(config)
 }
-
-
 
 export function post(config) {
   const instance = axios.create({
