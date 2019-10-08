@@ -27,6 +27,7 @@
     "babel-plugin-import": "^1.12.1",
     "sass": "^1.18.0",
     "sass-loader": "^7.1.0",
-    "vue-template-compiler": "^2.6.10"
+    "vue-template-compiler": "^2.6.10",
+    "webpack-cli": "^3.3.9"
   }
 }
